@@ -77,7 +77,7 @@ The value on which the formatter will be applied is always called `target`. In c
 This formatter returns a default value for `target` if it is empty (detected with the formatter isEmpty)
 
 - target: any
-- param val: any | if target is empty then this value will be used default value
+- param val: any | if target is empty then this value will be returned
 - return: any
 
 Example:
