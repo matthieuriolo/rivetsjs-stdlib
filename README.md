@@ -6,6 +6,9 @@ A bunch of daily used formatters and bindings for [rivetsjs](http://rivetsjs.com
 
 Stdlib was build as a drop-in-place solution for common problems while working with rivetsjs. It extends the rivetsjs with severals formatters (as example `default` and `numberFormat`) and binders. If you find something missing, unclear written or you got any problems then feel free to send me a message or an [email](http://ocsource.ch/index.php?q=contact)
 
+
+Please dont miss to take a look at the (testcases](https://rawgit.com/matthieuriolo/rivetsjs-stdlib/master/tests.html)
+
 ## Requirements and Browser support
 
 The library has been built for rivetjs 0.7.0 and Momentjs 2.8.3
@@ -66,6 +69,7 @@ The value on which the formatter will be applied is always called `target`. In c
 - inject = stringFormat
 - format = dateFormat
 - len = length
+- def = default
 
 ### General formatters
 

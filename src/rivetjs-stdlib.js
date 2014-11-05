@@ -462,4 +462,6 @@
 	rivets.formatters.inject = rivets.formatters.stringFormat
 	rivets.formatters.format = rivets.formatters.dateFormat
 	rivets.formatters.len = rivets.formatters.length
+	rivets.formatters.def = rivets.formatters.default
+	
 })(rivets, moment)
