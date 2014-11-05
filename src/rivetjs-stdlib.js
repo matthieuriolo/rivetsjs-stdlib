@@ -52,7 +52,7 @@
 	}
 
 
-	rivets.formatters.isInteger = function(target) {
+	rivets.formatters.isInteger = function(n) {
 		/*
 		thanks a lot to Dagg Nabbit
 		http://stackoverflow.com/questions/3885817/how-to-check-if-a-number-is-float-or-integer
@@ -60,7 +60,7 @@
 		return n === +n && n === (n|0)
 	}
 
-	rivets.formatters.isFloat = function(target) {
+	rivets.formatters.isFloat = function(n) {
 		/*
 		thanks a lot to Dagg Nabbit
 		http://stackoverflow.com/questions/3885817/how-to-check-if-a-number-is-float-or-integer
