@@ -277,7 +277,7 @@ Returns the biggest number from the passed parameters and the target
 - return: integer|float|Infinity|NaN
 
 #### numberFormat
-Returns a formatted version of the target as string. 
+Returns a formatted version of the target as string. The number will always be rounded after the DIN 1333 (1.55 => 1.6 and -1.55 => -1.6)
 
 - target: integer|float
 - parameter precision: integer default rivets.stdlib.defaultPrecision
