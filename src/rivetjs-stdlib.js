@@ -4,7 +4,7 @@
 	rivets.stdlib = {
 		defaultPrecision: 2,
 		defaultThousandSeparator: "'",
-		defaultDecimalSeparator: ",",
+		defaultDecimalSeparator: ".",
 		
 		defaultDateFormat: 'YYYY-MM-DD',
 		defaultTimeFormat: 'hh::mm:ss',
@@ -18,7 +18,7 @@
 
 	/* general */
 	rivets.formatters.default = function(target, val) {
-		return rivets.formatters.empty(target) ? target : val;
+		return rivets.formatters.empty(target) ? target : val
 	}
 
 	rivets.formatters.add = function(target, val) {
@@ -44,7 +44,7 @@
 	}
 
 	rivets.formatters.isNumeric = function(target) {
-		return !isNan(target)
+		return !isNaN(target)
 	}
 
 	rivets.formatters.isNaN = function(target) {
@@ -100,12 +100,12 @@
 
 	rivets.formatters.toInteger = function(target) {
 		var ret =  parseInt(target, 10)
-		return isNan(ret) ? 0 : ret
+		return isNaN(ret) ? 0 : ret
 	}
 
 	rivets.formatters.toFloat = function(target) {
 		var ret =  parseFloat(target)
-		return isNan(ret) ? 0.0 : ret
+		return isNaN(ret) ? 0.0 : ret
 	}
 
 	rivets.formatters.toDecimal = function(target) {
@@ -159,7 +159,7 @@
 	/* comparisons */
 
 	rivets.formatters.isEqual = function(target, val) {
-		return target == val
+		return target === val
 	}
 
 	rivets.formatters.isLess = function(target, val) {
@@ -306,7 +306,7 @@
 		return target.indexOf(val) !== -1
 	}
 
-	rivets.formatters.empty = function(target) {
+	rivets.formatters.isEmpty = function(target) {
 		if(!rivets.formatters.toBoolean(target))
 			return true
 		return rivets.formatters.toArray(target).length == 0
@@ -432,4 +432,5 @@
 	rivets.formatters.prv = rivets.formatters.preventDefault
 	rivets.formatters.inject = rivets.formatters.stringFormat
 	rivets.formatters.format = rivets.formatters.dateFormat
+	rivets.formatters.len = rivets.formatters.length
 })(rivets, moment)

@@ -1,0 +1,1081 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>Rivetsjs-stdlib tests</title>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/rivets/0.7.0/rivets.bundled.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.3/moment-with-locales.js"></script>
+		<script src="https://raw.githubusercontent.com/matthieuriolo/rivetsjs-stdlib/master/src/rivetjs-stdlib.js"></script>
+
+		<script>
+			var testCases = [
+				{
+					name: 'Formatters default',
+					func: rivets.formatters.default,
+					tests: [
+						{
+							input: [false, 'Hi'],
+							expected:  'Hi'
+						},{
+							input: [true, 'Hi'],
+							expected:  true
+						}
+					]
+				},
+
+
+
+
+				{
+					name: 'Formatters isBoolean',
+					func: rivets.formatters.isBoolean,
+					tests: [
+						{
+							input: [true],
+							expected:  true
+						},{
+							input: [1],
+							expected:  false
+						},{
+							input: ['a'],
+							expected:  false
+						},{
+							input: [{}],
+							expected:  false
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isNumeric',
+					func: rivets.formatters.isNumeric,
+					tests: [
+						{
+							input: [1],
+							expected:  true
+						},{
+							input: [1.1],
+							expected: true
+						},{
+							input: ['12'],
+							expected: true
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isNaN',
+					func: rivets.formatters.isNaN,
+					tests: [
+						{
+							input: [1],
+							expected:  false
+						},{
+							input: [1.1],
+							expected: false
+						},{
+							input: ['12'],
+							expected: false
+						},{
+							input: [{}],
+							expected:  true
+						},{
+							input: [[]],
+							expected:  true
+						},{
+							input: [true],
+							expected:  true
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isInteger',
+					func: rivets.formatters.isInteger,
+					tests: [
+						{
+							input: [1],
+							expected: true
+						},{
+							input: [1.1],
+							expected: false
+						},{
+							input: ['12'],
+							expected: false
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isFloat',
+					func: rivets.formatters.isFloat,
+					tests: [
+						{
+							input: [1],
+							expected: false
+						},{
+							input: [1.1],
+							expected: true
+						},{
+							input: ['12'],
+							expected: false
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isNumber',
+					func: rivets.formatters.isNumber,
+					tests: [
+						{
+							input: [1],
+							expected: true
+						},{
+							input: [1.1],
+							expected: true
+						},{
+							input: ['12'],
+							expected: true
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isObject',
+					func: rivets.formatters.isObject,
+					tests: [
+						{
+							input: [1.1],
+							expected: false
+						},{
+							input: ['12'],
+							expected: false
+						},{
+							input: [{}],
+							expected:  true
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isFunction',
+					func: rivets.formatters.isFunction,
+					tests: [
+						{
+							input: [1.1],
+							expected: false
+						},{
+							input: ['12'],
+							expected: false
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						},{
+							input: [function(){}],
+							expected:  true
+						},
+					]
+				},
+
+				{
+					name: 'Formatters isArray',
+					func: rivets.formatters.isArray,
+					tests: [
+						{
+							input: [1.1],
+							expected: false
+						},{
+							input: ['12'],
+							expected: false
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  true
+						},{
+							input: [true],
+							expected:  false
+						}
+					]
+				},
+
+				{
+					name: 'Formatters isString',
+					func: rivets.formatters.isString,
+					tests: [
+						{
+							input: [1.1],
+							expected: false
+						},{
+							input: ['12'],
+							expected: true
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						}
+					]
+				},
+
+				{
+					name: 'Formatters isInfinity',
+					func: rivets.formatters.isInfinity,
+					tests: [
+						{
+							input: [1.1],
+							expected: false
+						},{
+							input: ['12'],
+							expected: false
+						},{
+							input: [{}],
+							expected:  false
+						},{
+							input: [[]],
+							expected:  false
+						},{
+							input: [true],
+							expected:  false
+						},{
+							input: [Infinity],
+							expected:  true
+						}
+					]
+				},
+
+				{
+					name: 'Formatters toBoolean',
+					func: rivets.formatters.toBoolean,
+					tests: [
+						{
+							input: [1.1],
+							expected: true
+						},{
+							input: ['12'],
+							expected: true
+						},{
+							input: [{}],
+							expected:  true
+						},{
+							input: [[]],
+							expected:  true
+						},{
+							input: [true],
+							expected:  true
+						}
+					]
+				},
+
+				{
+					name: 'Formatters toInteger',
+					func: rivets.formatters.toInteger,
+					tests: [
+						{
+							input: [1.1],
+							expected: 1
+						},{
+							input: ['12'],
+							expected: 12
+						},{
+							input: ['12.6'],
+							expected: 12
+						},{
+							input: [{}],
+							expected:  0
+						},{
+							input: [[]],
+							expected:  0
+						},{
+							input: [true],
+							expected:  0
+						}
+					]
+				},
+
+				{
+					name: 'Formatters toFloat',
+					func: rivets.formatters.toFloat,
+					tests: [
+						{
+							input: [1.1],
+							expected: 1.1
+						},{
+							input: ['12'],
+							expected: 12.0
+						},{
+							input: ['12.6'],
+							expected: 12.6
+						},{
+							input: [{}],
+							expected:  0.0
+						},{
+							input: [[]],
+							expected:  0.0
+						},{
+							input: [true],
+							expected:  0.0
+						}
+					]
+				},
+
+				{
+					name: 'Formatters toDecimal',
+					func: rivets.formatters.toDecimal,
+					tests: [
+						{
+							input: [1],
+							expected: 1
+						},{
+							input: [1.1],
+							expected: 1.1
+						},{
+							input: ['12'],
+							expected: 12
+						},{
+							input: ['12.6'],
+							expected: 12.6
+						},{
+							input: [{}],
+							expected:  0
+						},{
+							input: [[]],
+							expected:  0
+						},{
+							input: [true],
+							expected:  0
+						}
+					]
+				},
+
+				{
+					name: 'Formatters toArray',
+					func: rivets.formatters.toArray,
+					tests: [
+						{
+							input: [1],
+							expected: [1]
+						},{
+							input: ['12'],
+							expected: 12
+						},{
+							input: [{val: 'check'}],
+							expected: ['check']
+						},{
+							input: [[1,2]],
+							expected:  [1,2]
+						},{
+							input: [true],
+							expected:  [true]
+						}
+					]
+				},
+
+				{
+					name: 'Formatters toString',
+					func: rivets.formatters.toString,
+					tests: [
+						{
+							input: [1],
+							expected: '1'
+						},{
+							input: ['12'],
+							expected: '12'
+						},{
+							input: [{val: 'check'}],
+							expected: "{val: 'check'}"
+						},{
+							input: [[1,2]],
+							expected:  "[1,2]"
+						},{
+							input: [true],
+							expected: "true"
+						},{
+							input: [function named(a,b) { return a + b }],
+							expected: "function named(a,b) { return a + b }"
+						}
+					]
+				},
+
+				{
+					name: 'Formatters sum',
+					func: rivets.formatters.sum,
+					tests: [
+						{
+							input: [1, 2],
+							expected: 3
+						},{
+							input: [1, -2],
+							expected: -1
+						},{
+							input: ['12', 2],
+							expected: 14
+						},{
+							input: ['12.6', 3.1],
+							expected: 15.7
+						},{
+							input: [{val: 'check'}, 1],
+							expected: NaN
+						},{
+							input: [[1,2], 1],
+							expected: NaN
+						},{
+							input: [true, 1],
+							expected: 2
+						}
+					]
+				},
+
+				{
+					name: 'Formatters substract',
+					func: rivets.formatters.substract,
+					tests: [
+						{
+							input: [1, 2],
+							expected: -1
+						},{
+							input: [1, -2],
+							expected: 3
+						},{
+							input: ['12', 2],
+							expected: 10
+						},{
+							input: ['12.6', 3.1],
+							expected: 9.5
+						},{
+							input: [{val: 'check'}, 1],
+							expected: NaN
+						},{
+							input: [[1,2], 1],
+							expected: NaN
+						},{
+							input: [true, 1],
+							expected: 0
+						}
+					]
+				},
+
+				{
+					name: 'Formatters multiply',
+					func: rivets.formatters.multiply,
+					tests: [
+						{
+							input: [1, 2],
+							expected: 2
+						},{
+							input: [1, -2],
+							expected: -2
+						},{
+							input: ['12', 2],
+							expected: 24
+						},{
+							input: ['12.6', 3.1],
+							expected: 39.06
+						},{
+							input: [{val: 'check'}, 1],
+							expected: NaN
+						},{
+							input: [[1,2], 1],
+							expected: NaN
+						},{
+							input: [true, 1],
+							expected: 1
+						}
+					]
+				},
+
+				{
+					name: 'Formatters divide',
+					func: rivets.formatters.divide,
+					tests: [
+						{
+							input: [1, 2],
+							expected: 0.5
+						},{
+							input: [1, -2],
+							expected: -0.5
+						},{
+							input: ['12', 2],
+							expected: 6
+						},{
+							input: ['12.6', 3.1],
+							expected: 12.6 / 3.1
+						},{
+							input: [{val: 'check'}, 1],
+							expected: NaN
+						},{
+							input: [[1,2], 1],
+							expected: NaN
+						},{
+							input: [true, 1],
+							expected: 1
+						},{
+							input: [100, 0],
+							expected: NaN
+						}
+					]
+				},
+
+				{
+					name: 'Formatters min',
+					func: rivets.formatters.min,
+					tests: [
+						{
+							input: [1, 2, 3],
+							expected: 1
+						},{
+							input: [1, -2],
+							expected: -2
+						},{
+							input: ['12', 2],
+							expected: 2
+						},{
+							input: ['12.6', 3.1],
+							expected: 3.1
+						},{
+							input: [{val: 'check'}, -1],
+							expected: -1
+						},{
+							input: [[1,2], -1],
+							expected: -1
+						},{
+							input: [true, 10],
+							expected: 1
+						}
+					]
+				},
+
+				{
+					name: 'Formatters max',
+					func: rivets.formatters.max,
+					tests: [
+						{
+							input: [1, 2, 3],
+							expected: 3
+						},{
+							input: [1, -2],
+							expected: 1
+						},{
+							input: ['12', 2],
+							expected: 12
+						},{
+							input: ['12.6', 3.1],
+							expected: 12.6
+						},{
+							input: [{val: 'check'}, -1],
+							expected: 0
+						},{
+							input: [[1,2], -1],
+							expected: 0
+						},{
+							input: [true, 10],
+							expected: 10
+						}
+					]
+				},
+
+				{
+					name: 'Formatters isEqual',
+					func: rivets.formatters.isEqual,
+					tests: [
+						{
+							input: [1, 1],
+							expected: true
+						},{
+							input: ['Hi', 'Hi'],
+							expected: true
+						},{
+							input: ['12', 12],
+							expected: false
+						},{
+							input: [true, 3.1],
+							expected: false
+						}
+					]
+				},
+				
+
+				{
+					name: 'Formatters isLess',
+					func: rivets.formatters.isLess,
+					tests: [
+						{
+							input: [1, 2],
+							expected: true
+						},{
+							input: ['1', 2],
+							expected: true
+						},{
+							input: ['1.2', -12],
+							expected: false
+						},{
+							input: [false, 3.1],
+							expected: true
+						},{
+							input: [true, 0],
+							expected: false
+						},{
+							input: [10, 10],
+							expected: false
+						}
+					]
+				},
+
+				{
+					name: 'Formatters isGreater',
+					func: rivets.formatters.isGreater,
+					tests: [
+						{
+							input: [1, 2],
+							expected: false
+						},{
+							input: ['1', 2],
+							expected: false
+						},{
+							input: ['1.2', -12],
+							expected: true
+						},{
+							input: [false, 3.1],
+							expected: false
+						},{
+							input: [true, 0],
+							expected: true
+						},{
+							input: [10, 10],
+							expected: false
+						}
+					]
+				},
+
+				{
+					name: 'Formatters isGreaterEqual',
+					func: rivets.formatters.isGreaterEqual,
+					tests: [
+						{
+							input: [1, 2],
+							expected: false
+						},{
+							input: ['1', 2],
+							expected: false
+						},{
+							input: ['1.2', -12],
+							expected: true
+						},{
+							input: [false, 3.1],
+							expected: false
+						},{
+							input: [true, 0],
+							expected: true
+						},{
+							input: [10, 10],
+							expected: true
+						}
+					]
+				},
+
+				{
+					name: 'Formatters isLessEqual',
+					func: rivets.formatters.isLessEqual,
+					tests: [
+						{
+							input: [1, 2],
+							expected: true
+						},{
+							input: ['1', 2],
+							expected: true
+						},{
+							input: ['1.2', -12],
+							expected: false
+						},{
+							input: [false, 3.1],
+							expected: true
+						},{
+							input: [true, 0],
+							expected: false
+						},{
+							input: [10, 10],
+							expected: true
+						}
+					]
+				},
+
+				{
+					name: 'Formatters or',
+					func: rivets.formatters.or,
+					tests: [
+						{
+							input: [false, false, true],
+							expected: true
+						},{
+							input: ['1', false],
+							expected: true
+						},{
+							input: [false, {}],
+							expected: true
+						},{
+							input: [false, []],
+							expected: true
+						},{
+							input: [false, ''],
+							expected: false
+						},{
+							input: [false, 0],
+							expected: false
+						}
+					]
+				},
+
+				{
+					name: 'Formatters and',
+					func: rivets.formatters.and,
+					tests: [
+						{
+							input: [false, false, true],
+							expected: false
+						},{
+							input: ['1', false],
+							expected: false
+						},{
+							input: ['1', true],
+							expected: true
+						},{
+							input: [true, {}],
+							expected: true
+						},{
+							input: [true, []],
+							expected: true
+						},{
+							input: [true, ''],
+							expected: false
+						},{
+							input: [true, 0],
+							expected: false
+						}
+					]
+				},
+
+
+				{
+					name: 'Formatters negate',
+					func: rivets.formatters.negate,
+					tests: [
+						{
+							input: [false],
+							expected: true
+						},{
+							input: [1],
+							expected: false
+						},{
+							input: ['1'],
+							expected: false
+						},{
+							input: [{}],
+							expected: false
+						},{
+							input: [[]],
+							expected: false
+						},{
+							input: [''],
+							expected: true
+						},{
+							input: [0],
+							expected: true
+						}
+					]
+				},
+
+				{
+					name: 'Formatters if',
+					func: rivets.formatters.if,
+					tests: [
+						{
+							input: [false, 'a', 'b'],
+							expected: 'b'
+						},{
+							input: [true, 'a', 'b'],
+							expected: 'a'
+						},{
+							input: ['1', 'a', 'b'],
+							expected: 'a'
+						},{
+							input: ['', 'a', 'b'],
+							expected: 'b'
+						},{
+							input: [{}, 'a', 'b'],
+							expected: 'a'
+						},{
+							input: [[], 'a', 'b'],
+							expected: 'a'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters numberFormat',
+					func: rivets.formatters.numberFormat,
+					tests: [
+						{
+							input: [0],
+							expected: '0.00'
+						},{
+							input: [true],
+							expected: '1.00'
+						},{
+							input: [1.555],
+							expected: '1.55'
+						},{
+							input: [-1.555],
+							expected: '-1.55'
+						},{
+							input: [1234567.89],
+							expected: "1'234'567.89"
+						},{
+							input: [1234567.89, 4, "-", '_'],
+							expected: "1_234_567-8900"
+						},{
+							input: [1234567.89, 0, "-", '_'],
+							expected: "1_234_567"
+						}
+					]
+				},
+
+				{
+					name: 'Formatters stringFormat',
+					func: rivets.formatters.stringFormat,
+					tests: [
+						{
+							input: ['Hi %s', 'there'],
+							expected: 'Hi there'
+						},{
+							input: ['Hi %s %s', 'there'],
+							expected: 'Hi there %s'
+						},{
+							input: ['Hi %s', 'there', 'oh'],
+							expected: 'Hi there'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters split',
+					func: rivets.formatters.split,
+					tests: [
+						{
+							input: ['Hi there', ' '],
+							expected: ['Hi', 'there']
+						}
+					]
+				},
+
+				{
+					name: 'Formatters lower',
+					func: rivets.formatters.lower,
+					tests: [
+						{
+							input: ['Hi there'],
+							expected: 'hi there'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters upper',
+					func: rivets.formatters.upper,
+					tests: [
+						{
+							input: ['Hi there'],
+							expected: 'HI THERE'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters capitalize',
+					func: rivets.formatters.capitalize,
+					tests: [
+						{
+							input: ['Hi there'],
+							expected: 'Hi There'
+						},{
+							input: ['What happens to akronyms like URL?'],
+							expected: 'What Happens To Akronyms Like URL?'
+						},{
+							input: ['this symbol-thingy'],
+							expected: 'This Symbol-Thingy'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters contains',
+					func: rivets.formatters.contains,
+					tests: [
+						{
+							input: ['Hi there', 'there'],
+							expected: true
+						},{
+							input: ['Hi there', ''],
+							expected: false
+						},{
+							input: ['Hi there', 'nope'],
+							expected: false
+						},{
+							input: [[1,2], 1],
+							expected: true
+						}
+					]
+				},
+
+				{
+					name: 'Formatters isEmpty',
+					func: rivets.formatters.isEmpty,
+					tests: [
+						{
+							input: ['Hi there'],
+							expected: false
+						},{
+							input: [''],
+							expected: true
+						},{
+							input: [1],
+							expected: false
+						},{
+							input: [0],
+							expected: true
+						},{
+							input: [[1,2]],
+							expected: false
+						},{
+							input: [[]],
+							expected: true
+						},{
+							input: [{}],
+							expected: true
+						},{
+							input: [{a: 'a'}],
+							expected: false
+						}
+					]
+				},
+
+				{
+					name: 'Formatters length',
+					func: rivets.formatters.length,
+					tests: [
+						{
+							input: ['Hi'],
+							expected: 2
+						},{
+							input: [''],
+							expected: 0
+						},{
+							input: [[]],
+							expected: 0
+						},{
+							input: [{}],
+							expected: 0
+						},{
+							input: [[1,2]],
+							expected: 2
+						},{
+							input: [{a: 'a'}],
+							expected: 1
+						}
+					]
+				},
+
+				{
+					name: 'Formatters join',
+					func: rivets.formatters.join,
+					tests: [
+						{
+							input: [[1,2], ','],
+							expected: '1,2'
+						},{
+							input: [{a : 'b', c : 'd',}, ','],
+							expected: 'b,d'
+						}
+					]
+				},
+			]
+
+			$(document).ready(function() {
+				var tabl = $('#tests')
+
+				testCases.forEach(function(testCase) {
+					tabl.append($('<tr><td colspan="4" bgcolor="#0000FF" style="color: #FFFFFF" align=center>' + testCase.name + '</td></tr>'))
+					tabl.append($('<tr><td>Input</td><td>Result</td><td>Expected</td><td>Win/Fail</td></tr>'))
+
+					testCase.tests.forEach(function(test) {
+						var ret = testCase.func.apply(testCase.fun, test.input)
+
+						tabl.append($('<tr><td>' + test.input.toString() +
+							'</td><td>' + (ret !== null ? ret.toString() : 'null') +
+							'</td><td>' + test.expected.toString() +
+							'</td><td bgcolor="' + ( ret === test.expected ? '#7CFC00' : '#FF000') + '"></td></tr>'))
+					})
+				})
+				
+			})
+		</script>
+	</head>
+
+	<body>
+		<table id="tests" width="100%">
+			
+		</table>
+	</body>
+</html>
