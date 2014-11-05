@@ -7,8 +7,8 @@
 		defaultDecimalSeparator: ".",
 		
 		defaultDateFormat: 'YYYY-MM-DD',
-		defaultTimeFormat: 'hh::mm:ss',
-		defaultDatetimeFormat: 'YYYY-MM-DD hh::mm:ss',
+		defaultTimeFormat: 'HH:mm:ss',
+		defaultDatetimeFormat: 'YYYY-MM-DD HH:mm:ss',
 	}
 	
 	/*
@@ -101,18 +101,18 @@
 	}
 
 	rivets.formatters.toInteger = function(target) {
-		var ret = target*1
+		var ret = parseInt(target*1, 10)
 		return isNaN(ret) ? 0 : ret
 	}
 
 	rivets.formatters.toFloat = function(target) {
-		var ret = target * 1.0
+		var ret = parseFloat(target*1.0)
 		return isNaN(ret) ? 0.0 : ret
 	}
 
 	rivets.formatters.toDecimal = function(target) {
 		var retI = rivets.formatters.toInteger(target*1)
-		var retF = rivets.formatters.toFloat(target*1)
+		var retF = rivets.formatters.toFloat(target)
 		return retI == retF ? retI : retF
 	}
 
@@ -223,17 +223,21 @@
 		/*
 		thanks to user2823670
 		http://stackoverflow.com/questions/10015027/javascript-tofixed-not-rounding
-		the only function which rounds according to the DIN 1333
 		*/
 		var ret = (+(Math.round(+(Math.abs(target) + 'e' + precision)) + 'e' + -precision)).toFixed(precision)
 		if(target < 0)
-			target = '-' + target
+			ret = '-' + ret
+
 		/*
 		thanks to Elias Zamaria
 		http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 		*/
 		ret = ret.split('.')
-		return ret[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) + decimalSeparator + ret[1]*1;
+		if(ret.length==2) {
+			return ret[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) + decimalSeparator + ret[1];
+		}
+
+		return ret[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator);
 	}
 
 	/* date functions */
