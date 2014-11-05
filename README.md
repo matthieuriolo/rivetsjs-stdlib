@@ -14,12 +14,14 @@ Momentjs 2.8.3
 ## Settings
 All settings can be found in rivets.stdlib. You can change the values according to your locale!
 
-- defaultPrecision default 2 |
-- defaultThousandSeparator default '
-- defaultDecimalSeparator default .
-- defaultDateFormat default YYYY-MM-DD
-- defaultTimeFormat default HH:mm:ss
-- defaultDatetimeFormat default YYYY-MM-DD HH:mm:ss
+Value | Default | Description
+--- | --- | ---
+defaultPrecision | 2 | numberFormat will return a number with `defaultPrecision` places after the comma
+defaultThousandSeparator | ' | the symbol used to separated every group of thousands
+defaultDecimalSeparator | . | the symbol used as the decimal point
+defaultDateFormat | YYYY-MM-DD | momentjs pattern for the formatter date
+defaultTimeFormat | HH:mm:ss | momentjs pattern for the formatter time
+defaultDatetimeFormat | YYYY-MM-DD HH:mm:ss | momentjs pattern for the formatter datetime
 
 
 
