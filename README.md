@@ -60,7 +60,7 @@ The value on which the formatter will be applied is always called `target`. In c
 ### Formatter shortcuts
 
 - eq = isEqual
-- ne = isEqual | negate
+- ne = isEqual && negate
 - lt = isLower
 - gt = isGreater
 - le = isLowerEqual
@@ -327,7 +327,6 @@ Returns true if the target and all parameters are true
 Returns the negated value of target
 
 - target: any
-- variadic: any
 - return: bool
 
 #### if
