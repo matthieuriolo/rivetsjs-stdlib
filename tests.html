@@ -17,8 +17,8 @@
 		defaultDecimalSeparator: ".",
 		
 		defaultDateFormat: 'YYYY-MM-DD',
-		defaultTimeFormat: 'hh::mm:ss',
-		defaultDatetimeFormat: 'YYYY-MM-DD hh::mm:ss',
+		defaultTimeFormat: 'HH:mm:ss',
+		defaultDatetimeFormat: 'YYYY-MM-DD HH:mm:ss',
 	}
 	
 	/*
@@ -462,7 +462,7 @@
 })(rivets, moment)
 
 
-			var defaultDate = new Date()
+			var defaultDate = new Date(2010, 11, 12, 13, 14, 15)
 
 			var deepEqual = function(a, b) {
 				if(typeof a == typeof b && typeof a == "object") {
@@ -493,8 +493,9 @@
 
 					return false
 				}
-
-				return (isNaN(a) && isNaN(b)) || a === b
+				if(typeof a == "number" && typeof b == "number" && isNaN(a) && isNaN(b))
+					return true
+				return  a === b
 			}
 
 			var testCases = [
@@ -1690,6 +1691,104 @@
 						}
 					]
 				},
+
+				{
+					name: 'Formatters date',
+					func: rivets.formatters.date,
+					tests: [
+						{
+							input: [defaultDate],
+							expected: '2010-12-12'
+						},{
+							input: [true],
+							expected: moment(1).format(rivets.stdlib.defaultDateFormat)
+						},{
+							input: ['somewhere over the rainbow'],
+							expected: 'Invalid date'
+						},{
+							input: [defaultDate.toISOString()],
+							expected: '2010-12-12'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters time',
+					func: rivets.formatters.time,
+					tests: [
+						{
+							input: [defaultDate],
+							expected: '13:14:15'
+						},{
+							input: [true],
+							expected: moment(1).format(rivets.stdlib.defaultTimeFormat)
+						},{
+							input: ['somewhere over the rainbow'],
+							expected: 'Invalid date'
+						},{
+							input: [defaultDate.toISOString()],
+							expected: '13:14:15'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters datetime',
+					func: rivets.formatters.datetime,
+					tests: [
+						{
+							input: [defaultDate],
+							expected: '2010-12-12 13:14:15'
+						},{
+							input: [true],
+							expected: moment(1).format(rivets.stdlib.defaultDatetimeFormat)
+						},{
+							input: ['somewhere over the rainbow'],
+							expected: 'Invalid date'
+						},{
+							input: [defaultDate.toISOString()],
+							expected: '2010-12-12 13:14:15'
+						}
+					]
+				},
+
+
+				{
+					name: 'Formatters toTimestamp',
+					func: rivets.formatters.toTimestamp,
+					tests: [
+						{
+							input: [defaultDate],
+							expected: '1292156055'
+						},{
+							input: [true],
+							expected: moment(1).format('X')
+						},{
+							input: ['somewhere over the rainbow'],
+							expected: 'Invalid date'
+						},{
+							input: [defaultDate.toISOString()],
+							expected: '1292156055'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters toDate',
+					func: rivets.formatters.toDate,
+					tests: [
+						{
+							input: [1292156055],
+							expected: defaultDate
+						},{
+							input: [true],
+							expected: moment(1)
+						},{
+							input: ['somewhere over the rainbow'],
+							expected: 'Invalid Date'
+						}
+					]
+				}
 			]
 
 			$(document).ready(function() {
