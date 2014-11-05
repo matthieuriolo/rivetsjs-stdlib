@@ -18,15 +18,15 @@
 
 	/* general */
 	rivets.formatters.default = function(target, val) {
-		return rivets.formatters.empty(target) ? target : val
+		return rivets.formatters.empty(target) ? target : val;
 	}
 
 	rivets.formatters.add = function(target, val) {
-		return target) + val;
+		return target + val
 	}
 
 	rivets.formatters.sub = function(target, val) {
-		return target - val;
+		return target - val
 	}
 
 	rivets.formatters.map = function(target, obj, prop) {
@@ -125,7 +125,7 @@
 	}
 
 	rivets.formatters.toString = function(target) {
-		return target.toString()
+		return target ? target.toString() : ''
 	}
 
 
