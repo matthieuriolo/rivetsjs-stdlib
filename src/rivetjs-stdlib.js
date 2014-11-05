@@ -146,6 +146,16 @@
 		return (1*target) * (1*val);
 	}
 
+	/*
+	rivets.formaters.crossMultiplication = function(target, base, total) {
+		return (target / base) * total
+	}
+
+	rivets.formaters.percents = function(target, base, total) {
+		return rivets.formaters.crossMultiplication(target, base, total) + '%';
+	}
+	*/
+
 	rivets.formatters.divide = function(target, val) {
 		return (1*target) / (1*val);
 	}
@@ -373,10 +383,13 @@
 	 *
 	 */
 	
-	rivets.binders.style = function(target, val) {
-		el.style[val] = target
+	rivets.binders.width = function(el, value) {
+		el.style.width = value
 	}
 
+	rivets.binders.height = function(el, value) {
+		el.style.height = value
+	}
 
 	/* extra bind-type for rivets - we may need a better solution than that one */
 	rivets.binders.template = {
