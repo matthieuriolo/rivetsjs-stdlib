@@ -18,7 +18,7 @@
 
 	/* general */
 	rivets.formatters.default = function(target, val) {
-		return rivets.formatters.isEmpty(target) ? target : val
+		return !rivets.formatters.isEmpty(target) ? target : val
 	}
 
 	rivets.formatters.add = function(target, val) {
@@ -48,7 +48,9 @@
 	}
 
 	rivets.formatters.isNaN = function(target) {
-		return !rivets.formatters.isNumeric(target)
+		if(rivets.formatters.isArray(target))
+			return true
+		return isNaN(target)
 	}
 
 
@@ -65,7 +67,7 @@
 		thanks a lot to Dagg Nabbit
 		http://stackoverflow.com/questions/3885817/how-to-check-if-a-number-is-float-or-integer
 		*/
-		return n === +n && n !== (n|0)
+		return Infinity !== n && n === +n && n !== (n|0)
 	}
 
 	rivets.formatters.isNumber = function(target) {
@@ -73,7 +75,7 @@
 	}
 
 	rivets.formatters.isObject = function(target) {
-		return target && typeof target == "object" && !rivets.formatters.isArray(target)
+		return rivets.formatters.toBoolean(target) && typeof target == "object" && !rivets.formatters.isArray(target)
 	}
 
 	rivets.formatters.isFunction = function(target) {
@@ -99,18 +101,18 @@
 	}
 
 	rivets.formatters.toInteger = function(target) {
-		var ret =  parseInt(target, 10)
+		var ret = target*1
 		return isNaN(ret) ? 0 : ret
 	}
 
 	rivets.formatters.toFloat = function(target) {
-		var ret =  parseFloat(target)
+		var ret = target * 1.0
 		return isNaN(ret) ? 0.0 : ret
 	}
 
 	rivets.formatters.toDecimal = function(target) {
-		var retI = rivets.formatters.toInteger(target)
-		var retF = rivets.formatters.toFloat(target)
+		var retI = rivets.formatters.toInteger(target*1)
+		var retF = rivets.formatters.toFloat(target*1)
 		return retI == retF ? retI : retF
 	}
 
@@ -218,12 +220,20 @@
 		if(!thousandSeparator)
 			thousandSeparator = rivets.stdlib.defaultThousandSeparator
 		
-		var ret = target.toFixed(precision)
+		/*
+		thanks to user2823670
+		http://stackoverflow.com/questions/10015027/javascript-tofixed-not-rounding
+		the only function which rounds according to the DIN 1333
+		*/
+		var ret = (+(Math.round(+(Math.abs(target) + 'e' + precision)) + 'e' + -precision)).toFixed(precision)
+		if(target < 0)
+			target = '-' + target
 		/*
 		thanks to Elias Zamaria
 		http://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 		*/
-		return ret.replace('.', decimalSeparator).replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator);
+		ret = ret.split('.')
+		return ret[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandSeparator) + decimalSeparator + ret[1]*1;
 	}
 
 	/* date functions */
@@ -294,7 +304,7 @@
 	}
 
 	rivets.formatters.capitalize = function(target) {
-		return target.splits(' ').map(function(seq) {
+		return target.split(' ').map(function(seq) {
 			return seq.split('-').map(function(word) {
 				return word.charAt(0).toUpperCase() + word.slice(1)
 			}).join('-')
@@ -315,6 +325,8 @@
 	/* array formatters */
 
 	rivets.formatters.length = function(target) {
+		if(rivets.formatters.isString(target))
+			return target.length
 		return rivets.formatters.toArray(target).length;
 	}
 
