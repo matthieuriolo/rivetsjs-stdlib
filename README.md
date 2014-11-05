@@ -12,11 +12,34 @@ The library has been built for rivetjs 0.7.0
 Momentjs 2.8.3
 
 ## Settings
+All settings can be found in rivets.stdlib. You can change the values according to your locale!
+
+- defaultPrecision default 2 |
+- defaultThousandSeparator default '
+- defaultDecimalSeparator default .
+- defaultDateFormat default YYYY-MM-DD
+- defaultTimeFormat default HH:mm:ss
+- defaultDatetimeFormat default YYYY-MM-DD HH:mm:ss
+
 
 
 ## Formatters
 
 The value on which the formatter will be applied is always called `target`. In case that the formatter is marked as variadic then you might pass as many parameters as you wish
+
+
+### Overview
+- [Formatter shortcuts](#formatter-shortcuts)
+- [General formatters](#general-formatters)
+- [Type detection](#type-detection)
+- [Type conversion](#type-conversion)
+- [Logical formatters](#logical-formatters)
+- [Numeric formatters](#numeric-formatters)
+- [String formatters](#string-formatters)
+- [Date formatters](#date-formatters)
+- [Object formatters](#object-formatters)
+- [Array formatters](#array-formatters)
+- [Function formatters](#function-formatters)
 
 ### Formatter shortcuts
 
@@ -31,7 +54,7 @@ The value on which the formatter will be applied is always called `target`. In c
 - format = dateFormat
 - len = length
 
-### General
+### General formatters
 
 #### default
 This formatter returns a default value for `target` if it is empty (detected with the formatter isEmpty)
@@ -228,8 +251,79 @@ Returns the string representation of the given target. This actually calls the J
 - target: any
 - return: string
 
+### Comparison
 
-### numeric functions
+#### isEqual
+Returns the true if the target and the first parameter are equal
+
+- target: any
+- parameter val: any
+- return: bool
+
+#### isLess
+Returns the true if the target is smaller as first parameter. Both values will be converted to a numeric representation
+
+- target: any
+- parameter val: any
+- return: bool
+
+#### isGreater
+Returns the true if the target is greater as first parameter. Both values will be converted to a numeric representation
+
+- target: any
+- parameter val: any
+- return: bool
+
+#### isLessEqual
+Returns the true if the target is smaller or is equal to the first parameter. Both values will be converted to a numeric representation
+
+- target: any
+- parameter val: any
+- return: bool
+
+#### isGreaterEqual
+Returns the true if the target is greater or is equal to the first parameter. Both values will be converted to a numeric representation
+
+- target: any
+- parameter val: any
+- return: bool
+
+### Logical formatters
+
+#### or
+Returns the true if the target or one of parameters are true
+
+- target: any
+- variadic: any
+- return: bool
+
+
+#### and
+Returns the true if the target and all parameters are true
+
+- target: any
+- variadic: any
+- return: bool
+
+
+#### negate
+Returns the true if the target and all parameters are true
+
+- target: any
+- variadic: any
+- return: bool
+
+#### if
+Returns the first parameter if the target is true or returns the second parameter
+
+- target: bool
+- param trueCase: any | will be returned if target is true
+- param falseCase: any | will be returned if target is false
+- return: any
+
+
+
+### Numeric formatters
 
 
 #### sum
@@ -285,146 +379,7 @@ Returns a formatted version of the target as string. The number will always be r
 - parameter thousandSeparator: string default rivets.stdlib.defaultThousandSeparator
 - return: string
 
-
-### Comparison
-
-#### isEqual
-Returns the true if the target and the first parameter are equal
-
-- target: any
-- parameter val: any
-- return: bool
-
-#### isLess
-Returns the true if the target is smaller as first parameter. Both values will be converted to a numeric representation
-
-- target: any
-- parameter val: any
-- return: bool
-
-#### isGreater
-Returns the true if the target is greater as first parameter. Both values will be converted to a numeric representation
-
-- target: any
-- parameter val: any
-- return: bool
-
-#### isLessEqual
-Returns the true if the target is smaller or is equal to the first parameter. Both values will be converted to a numeric representation
-
-- target: any
-- parameter val: any
-- return: bool
-
-#### isGreaterEqual
-Returns the true if the target is greater or is equal to the first parameter. Both values will be converted to a numeric representation
-
-- target: any
-- parameter val: any
-- return: bool
-
-### Logic
-
-#### or
-Returns the true if the target or one of parameters are true
-
-- target: any
-- variadic: any
-- return: bool
-
-
-#### and
-Returns the true if the target and all parameters are true
-
-- target: any
-- variadic: any
-- return: bool
-
-
-#### negate
-Returns the true if the target and all parameters are true
-
-- target: any
-- variadic: any
-- return: bool
-
-#### if
-Returns the first parameter if the target is true or returns the second parameter
-
-- target: bool
-- param trueCase: any | will be returned if target is true
-- param falseCase: any | will be returned if target is false
-- return: any
-
-
-### Date functions
-
-#### date
-Returns the date portion as string from target (JS Date). Default formatting is rivets.stdlib.defaultDateFormat
-
-- target: Date
-- return: string
-
-
-#### time
-Returns the time portion as string from target (JS Date). Default formatting is rivets.stdlib.defaultTimeFormat
-
-- target: Date
-- return: string
-
-
-#### datetime
-Returns a datetime as string from target (JS Date). Default formatting is rivets.stdlib.defaultDatetimeFormat
-
-- target: Date
-- return: string
-
-
-#### toTimestamp
-Returns the unix timestamp from target (JS Date)
-
-- target: Date
-- return: integer
-
-
-#### toDate
-Returns the JS Date object representing the given unix timestamp
-
-- target: integer
-- return: Date
-
-
-#### toMoment
-Returns the momentjs object representing of the given JS Date
-
-- target: integer
-- return: Date
-
-
-#### dateFormat
-Returns a string formatted with momentjs.format. The first parameter specifies the format pattern
-
-- target: JS Date
-- param val: string | documented in [momentjs](http://momentjs.com/docs/#/displaying/format/)
-- return: string
-
-### Object functions
-
-#### keys
-Returns all keys of target
-
-- target: object
-- return: array
-
-
-#### values
-Returns all values of target
-
-- target: object
-- return: array
-
-
-### String functions
+### String formatters
 
 #### stringFormat
 Returns the target with all appearance of %s replaced by the according parameter
@@ -474,7 +429,77 @@ Returns the string length, the array length or the count of keys of an object
 - target: any
 - return: integer
 
-### Array formatter
+### Date formatters
+
+#### date
+Returns the date portion as string from target (JS Date). Default formatting is rivets.stdlib.defaultDateFormat
+
+- target: Date
+- return: string
+
+
+#### time
+Returns the time portion as string from target (JS Date). Default formatting is rivets.stdlib.defaultTimeFormat
+
+- target: Date
+- return: string
+
+
+#### datetime
+Returns a datetime as string from target (JS Date). Default formatting is rivets.stdlib.defaultDatetimeFormat
+
+- target: Date
+- return: string
+
+
+#### toTimestamp
+Returns the unix timestamp from target (JS Date)
+
+- target: Date
+- return: integer
+
+
+#### toDate
+Returns the JS Date object representing the given unix timestamp
+
+- target: integer
+- return: Date
+
+
+#### toMoment
+Returns the momentjs object representing of the given JS Date. (use this method afterwards with the function `map`)
+
+- target: integer
+- return: Date
+
+
+#### dateFormat
+Returns a string formatted with momentjs.format. The first parameter specifies the format pattern
+
+- target: JS Date
+- param val: string | documented in [momentjs](http://momentjs.com/docs/#/displaying/format/)
+- return: string
+
+
+
+
+
+### Object formatters
+
+#### keys
+Returns all keys of target
+
+- target: object
+- return: array
+
+
+#### values
+Returns all values of target
+
+- target: object
+- return: array
+
+### Array formattersObject formatters
 
 #### join
 Returns the string by joining the target with the given parameter
@@ -484,7 +509,9 @@ Returns the string by joining the target with the given parameter
 - return: string
 
 
-### Function formatter
+
+
+### Function formatterArray formattersObject formatters
 
 #### wrap
 Returns a new function which will call target with the arguments given to wrap and with the arguments used in the event caller. The arguments passed to wrap can be accessed as the first arguments
@@ -506,6 +533,8 @@ Returns a anonym functions which calls preventDefault and afterwards target
 
 - target: function
 - return: function
+
+
 
 
 ## Binders
