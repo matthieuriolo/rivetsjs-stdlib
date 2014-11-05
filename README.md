@@ -402,7 +402,7 @@ Returns the momentjs object representing of the given JS Date
 
 
 #### dateFormat
-Returns the momentjs object representing of the given JS Date
+Returns a string formatted with momentjs.format. The first parameter specifies the format pattern
 
 - target: JS Date
 - param val: string | documented in [momentjs](http://momentjs.com/docs/#/displaying/format/)
@@ -455,7 +455,8 @@ Converts the target to uppercase
 - return: string
 
 #### capitalize
-Converts the first letter of every word to lowercase in target
+Converts the first letter of every word to lowercase in target. Every substring separated by a space or a - will
+be detected as a word
 
 - target: string
 - return: string
