@@ -23,6 +23,55 @@
 					]
 				},
 
+				{
+					name: 'Formatters add',
+					func: rivets.formatters.add,
+					tests: [
+						{
+							input: [1, 2],
+							expected:  3
+						},{
+							input: [1, -2],
+							expected:  -1
+						},{
+							input: ['Hi', 'there'],
+							expected:  'Hithere'
+						}
+					]
+				},
+
+				{
+					name: 'Formatters sub',
+					func: rivets.formatters.sub,
+					tests: [
+						{
+							input: [1, 2],
+							expected:  -1
+						},{
+							input: [1, -2],
+							expected:  1
+						},{
+							input: [new Date(86400000 * 2), new Date(86400000)],
+							expected:  (new Date(86400000 * 2) - new Date(86400000))
+						}
+					]
+				},
+
+
+				{
+					name: 'Formatters sub',
+					func: rivets.formatters.add,
+					tests: [
+						{
+							input: [1, 2],
+							expected:  -1
+						},{
+							input: [1, -2],
+							expected:  1
+						}
+					]
+				},
+
 
 
 
@@ -643,6 +692,9 @@
 						},{
 							input: [true, 3.1],
 							expected: false
+						},{
+							input: [new Date()],
+							expected: new Date()
 						}
 					]
 				},

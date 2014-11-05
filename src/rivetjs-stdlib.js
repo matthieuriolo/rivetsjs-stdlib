@@ -18,7 +18,7 @@
 
 	/* general */
 	rivets.formatters.default = function(target, val) {
-		return rivets.formatters.empty(target) ? target : val
+		return rivets.formatters.isEmpty(target) ? target : val
 	}
 
 	rivets.formatters.add = function(target, val) {
