@@ -1,5 +1,13 @@
 'use strict';
 
+/**
+ * Copyright:   Matthieu Riolo <advise@ocsource.ch>
+ * Website:     http://www.ocsource.ch/
+ * License:     <see file /License>
+ * Created:     2014-11-05
+ * Repository:  https://github.com/matthieuriolo/rivetsjs-stdlib
+ */
+
 (function(rivets, moment) {
 	rivets.stdlib = {
 		defaultPrecision: 2,
