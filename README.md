@@ -8,8 +8,32 @@ Stdlib was build as a drop-in-place solution for common problems while working w
 
 ## Requirements and Browser support
 
-The library has been built for rivetjs 0.7.0
-Momentjs 2.8.3
+The library has been built for rivetjs 0.7.0 and Momentjs 2.8.3
+
+rivetsjs-stdlib himself does not have any dependencies to jquery or any other extension except momentjs (only for the date formatters)
+
+
+
+# Overview
+- [Settings](#settings)
+- [Formatters](#formatters)
+	- [Formatter shortcuts](#formatter-shortcuts)
+	- [General formatters](#general-formatters)
+	- [Type detection](#type-detection)
+	- [Type conversion](#type-conversion)
+	- [Logical formatters](#logical-formatters)
+	- [Numeric formatters](#numeric-formatters)
+	- [String formatters](#string-formatters)
+	- [Date formatters](#date-formatters)
+	- [Object formatters](#object-formatters)
+	- [Array formatters](#array-formatters)
+	- [Function formatters](#function-formatters)
+- [Binders](#binders)
+	- [width](#width)
+	- [height](#height)
+	- [template](#template)
+
+
 
 ## Settings
 All settings can be found in rivets.stdlib. You can change the values according to your locale!
@@ -29,19 +53,6 @@ defaultDatetimeFormat | YYYY-MM-DD HH:mm:ss | momentjs pattern for the formatter
 
 The value on which the formatter will be applied is always called `target`. In case that the formatter is marked as variadic then you might pass as many parameters as you wish
 
-
-### Overview
-- [Formatter shortcuts](#formatter-shortcuts)
-- [General formatters](#general-formatters)
-- [Type detection](#type-detection)
-- [Type conversion](#type-conversion)
-- [Logical formatters](#logical-formatters)
-- [Numeric formatters](#numeric-formatters)
-- [String formatters](#string-formatters)
-- [Date formatters](#date-formatters)
-- [Object formatters](#object-formatters)
-- [Array formatters](#array-formatters)
-- [Function formatters](#function-formatters)
 
 ### Formatter shortcuts
 
@@ -501,7 +512,7 @@ Returns all values of target
 - target: object
 - return: array
 
-### Array formattersObject formatters
+### Array formatters
 
 #### join
 Returns the string by joining the target with the given parameter
@@ -513,7 +524,7 @@ Returns the string by joining the target with the given parameter
 
 
 
-### Function formatterArray formattersObject formatters
+### Function formatters
 
 #### wrap
 Returns a new function which will call target with the arguments given to wrap and with the arguments used in the event caller. The arguments passed to wrap can be accessed as the first arguments
@@ -542,7 +553,7 @@ Returns a anonym functions which calls preventDefault and afterwards target
 ## Binders
 
 
-#### width
+#### width 
 Resets the css width value with the observed value
 
 
