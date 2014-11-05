@@ -485,8 +485,8 @@ Returns the JS Date object representing the given unix timestamp
 #### toMoment
 Returns the momentjs object representing of the given JS Date. (use this method afterwards with the function `map`)
 
-- target: integer
-- return: Date
+- target: Date
+- return: momentjs
 
 
 #### dateFormat
