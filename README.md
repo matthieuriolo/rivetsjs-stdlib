@@ -271,35 +271,35 @@ Returns the string representation of the given target. This actually calls the J
 ### Comparison
 
 #### isEqual
-Returns the true if the target and the first parameter are equal
+Returns true if the target and the first parameter are equal
 
 - target: any
 - parameter val: any
 - return: bool
 
 #### isLess
-Returns the true if the target is smaller as first parameter. Both values will be converted to a numeric representation
+Returns true if the target is smaller as first parameter. Both values will be converted to a numeric representation
 
 - target: any
 - parameter val: any
 - return: bool
 
 #### isGreater
-Returns the true if the target is greater as first parameter. Both values will be converted to a numeric representation
+Returns true if the target is greater as first parameter. Both values will be converted to a numeric representation
 
 - target: any
 - parameter val: any
 - return: bool
 
 #### isLessEqual
-Returns the true if the target is smaller or is equal to the first parameter. Both values will be converted to a numeric representation
+Returns true if the target is smaller or is equal to the first parameter. Both values will be converted to a numeric representation
 
 - target: any
 - parameter val: any
 - return: bool
 
 #### isGreaterEqual
-Returns the true if the target is greater or is equal to the first parameter. Both values will be converted to a numeric representation
+Returns true if the target is greater or is equal to the first parameter. Both values will be converted to a numeric representation
 
 - target: any
 - parameter val: any
@@ -308,7 +308,7 @@ Returns the true if the target is greater or is equal to the first parameter. Bo
 ### Logical formatters
 
 #### or
-Returns the true if the target or one of parameters are true
+Returns true if the target or one of parameters are true
 
 - target: any
 - variadic: any
@@ -316,7 +316,7 @@ Returns the true if the target or one of parameters are true
 
 
 #### and
-Returns the true if the target and all parameters are true
+Returns true if the target and all parameters are true
 
 - target: any
 - variadic: any
@@ -324,7 +324,7 @@ Returns the true if the target and all parameters are true
 
 
 #### negate
-Returns the true if the target and all parameters are true
+Returns true if the target and all parameters are true
 
 - target: any
 - variadic: any
