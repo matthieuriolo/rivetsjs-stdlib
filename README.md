@@ -324,7 +324,7 @@ Returns true if the target and all parameters are true
 
 
 #### negate
-Returns true if the target and all parameters are true
+Returns the negated value of target
 
 - target: any
 - variadic: any
@@ -351,7 +351,7 @@ Returns the sum of the target and the first parameter. Both values will be conve
 - return: integer|float
 
 #### substract
-Returns the substraction of the target and the first parameter. Both values will be converted to a numeric
+Returns the substraction of the target and the first parameter. Both values will be converted to a numeric representation
 
 - target: any
 - parameter val: any
@@ -516,6 +516,13 @@ Returns all values of target
 - target: object
 - return: array
 
+#### length
+Returns the string length, the array length or the count of keys of an object
+
+- target: any
+- return: integer
+
+
 ### Array formatters
 
 #### join
@@ -525,6 +532,18 @@ Returns the string by joining the target with the given parameter
 - param val: string
 - return: string
 
+#### contains
+Returns true if the target contains the given substring or if target array holds the parameter
+
+- target: string|array
+- return: bool
+
+
+#### length
+Returns the string length, the array length or the count of keys of an object
+
+- target: any
+- return: integer
 
 
 
