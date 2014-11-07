@@ -597,7 +597,7 @@ Resets the css height value with the target
 #### template
 The template binder is aquivalent to rv-html with the exceptions that the data bindings are accessible in the
 included html. You should not use that functions since rivetsjs provides a much better way (components). But
-most like for quite a few people this binder just will work fine
+for the most people this binder just will work fine and for non-complex problem its absolute legit to use it
 
 Example:
 ```html
