@@ -432,6 +432,17 @@ be detected as a word. The rest stays the it used to (URL will not be converted 
 - target: string
 - return: string
 
+Example:
+```html
+<span rv-text="'string teXt-caSe uRl' | capitalize"></span>
+```
+
+Result:
+```html
+<span>String TeXt-CaSe URl</span>
+```
+
+
 #### contains
 Returns true if the target contains the given substring or if target array holds the parameter
 
