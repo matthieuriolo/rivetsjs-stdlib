@@ -576,17 +576,30 @@ Returns a anonym functions which calls preventDefault and afterwards target
 
 
 #### width 
-Resets the css width value with the observed value
+Resets the css width value with the target
 
 
 #### height
-Resets the css height value with the observed value
+Resets the css height value with the target
 
 
 #### template
 The template binder is aquivalent to rv-html with the exceptions that the data bindings are accessible in the
-included html. You should not use that functions since rivetsjs provides a much better way to solve it. But
+included html. You should not use that functions since rivetsjs provides a much better way (components). But
 most like for quite a few people this binder just will work fine
+
+Example:
+```html
+<div id="mydiv" rv-template="myhtml"></div>
+<script>
+rivets.bind($('#mydiv'), {myhtml: '<span rv-text="val"></span>', val: 'nice'})
+</script>
+```
+
+Results:
+```html
+<div id="mydiv"><span>nice</span></div>
+```
 
 
 
