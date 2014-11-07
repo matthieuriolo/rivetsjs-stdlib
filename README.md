@@ -404,6 +404,15 @@ Returns the target with all appearance of %s replaced by the according parameter
 - variadic: string
 - return: string
 
+Example:
+```html
+<span rv-text="'some %s for %s' | stringFormat 'text' 'you'"></span>
+```
+
+Result:
+```html
+<span>some text for you</span>
+```
 
 #### split
 Splits the target into an array by a given seperator
