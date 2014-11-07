@@ -576,6 +576,18 @@ Returns a new function which will call target with the arguments given to wrap a
 - variadic: any
 - return: function
 
+Example:
+```html
+<div rv-each-item="collection">
+	<div rv-on-click="aClickHandler | wrap item"></div>
+</div>
+```
+
+Result:
+```javascript
+function aClickHandler(item, event) {}
+```
+
 
 #### delay
 Returns a anonym functions which calls target with a delay
