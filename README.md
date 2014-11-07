@@ -4,7 +4,7 @@ rivetsjs-stdlib
 A bunch of daily used formatters and bindings for [rivetsjs](http://rivetsjs.com).
 
 
-Stdlib was build as a drop-in-place solution for common problems while working with rivetsjs. It extends the rivetsjs with severals formatters (as example `default` and `numberFormat`) and binders. If you find something missing, unclear written or you got any problems then feel free to send me a message or an [email](http://ocsource.ch/index.php?q=contact)
+Stdlib was build as a simple drop-in-place library for common problems while working with rivetsjs. It extends rivetsjs with severals formatters (as example `default` and `numberFormat`) and binders. If you find something missing, unclear written or you got any problems then feel free to send me a message or an [email](http://ocsource.ch/index.php?q=contact)
 
 
 Please dont miss to take a look at the [test cases](https://rawgit.com/matthieuriolo/rivetsjs-stdlib/master/tests.html)
