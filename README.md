@@ -70,6 +70,7 @@ The value on which the formatter will be applied is always called `target`. In c
 - format = dateFormat
 - len = length
 - def = default
+- neg = negate
 
 ### General formatters
 
