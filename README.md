@@ -426,8 +426,8 @@ Converts the target to uppercase
 - return: string
 
 #### capitalize
-Converts the first letter of every word to lowercase in target. Every substring separated by a space or a - will
-be detected as a word
+Converts the first letter of every word to uppercase in target. Every substring separated by a space or a - will
+be detected as a word. The rest stays the it used to (URL will not be converted to Url)
 
 - target: string
 - return: string
