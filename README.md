@@ -504,7 +504,7 @@ Returns the JS Date object representing the given unix timestamp
 
 
 #### toMoment
-Returns the momentjs object representing of the given JS Date. (use this method afterwards with the function `map`)
+Returns the momentjs object representing of the given JS Date. (use this method afterwards with the formatter `map`)
 
 - target: Date
 - return: momentjs
