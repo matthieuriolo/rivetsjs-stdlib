@@ -13,7 +13,7 @@ Please dont miss to take a look at the [test cases](https://rawgit.com/matthieur
 
 The library has been built for rivetjs 0.7.0 and Momentjs 2.8.3
 
-rivetsjs-stdlib himself does not have any dependencies to jquery or any other extension except momentjs (only for the date formatters)
+rivetsjs-stdlib himself does not have any dependencies to jquery or any other extension except momentjs (only for the date formatters) and of course [rivets.js](http://rivetsjs.com)
 
 
 
