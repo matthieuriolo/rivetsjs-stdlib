@@ -585,7 +585,9 @@ Example:
 
 Result:
 ```javascript
-function aClickHandler(item, event) {}
+function aClickHandler(item, event) {
+	/* a function with those arguments will be called */
+}
 ```
 
 
