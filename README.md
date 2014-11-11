@@ -59,18 +59,20 @@ The value on which the formatter will be applied is always called `target`. In c
 
 ### Formatter shortcuts
 
-- eq = isEqual
-- ne = isEqual && negate
-- lt = isLower
-- gt = isGreater
-- le = isLowerEqual
-- ge = isGreaterEqual
-- neg = negate
-- prv = preventDefault
-- inject = stringFormat
-- format = dateFormat
-- len = length
-- def = default
+Shortcut | Description
+--- | --- | ---
+| eq | isEqual |
+| ne | isEqual && negate |
+| lt | isLower |
+| gt | isGreater |
+| le | isLowerEqual |
+| ge | isGreaterEqual |
+| neg | negate |
+| prv | preventDefault |
+| inject | stringFormat |
+| format | dateFormat |
+| len | length |
+| def | default |
 
 ### General formatters
 
