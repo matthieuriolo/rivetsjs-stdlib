@@ -11,9 +11,9 @@ Please dont miss to take a look at the [test cases](https://rawgit.com/matthieur
 
 ## Requirements and Browser support
 
-The library has been built for rivetjs 0.7.0 and Momentjs 2.8.3
+The library has been built for rivetjs 0.7.0. And optional for  jQuery 2.1.1 and Momentjs 2.8.3
 
-rivetsjs-stdlib himself does not have any dependencies to jquery or any other extension except momentjs (only for the date formatters) and of course [rivets.js](http://rivetsjs.com)
+jQuery is only needed for the template binder. Momentjs is only needed for the date formatters.
 
 The library has the same browser support as rivetjs
 

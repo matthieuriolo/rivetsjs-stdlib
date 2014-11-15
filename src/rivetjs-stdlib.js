@@ -437,8 +437,8 @@
 	        }
 	        
 	        var models = {}
-	        for(key in self.view.models) {
-	        	models[key] = self.view.models[key]
+	        for(var k in self.view.models) {
+	        	models[k] = self.view.models[k]
 	        }
 			
 			$(el).children().each(function() {
@@ -472,4 +472,4 @@
 	rivets.formatters.len = rivets.formatters.length
 	rivets.formatters.def = rivets.formatters.default
 	rivets.formatters.neg = rivets.formatters.negate
-})(rivets, moment)
+})(rivets, moment || {})
