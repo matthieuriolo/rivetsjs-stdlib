@@ -181,6 +181,10 @@
 	rivets.formatters.isEqual = function(target, val) {
 		return target === val
 	}
+	
+	rivets.formatters.isNotEqual = function(target, val) {
+		return target !== val
+	}
 
 	rivets.formatters.isLess = function(target, val) {
 		return (target*1) < (val*1)
