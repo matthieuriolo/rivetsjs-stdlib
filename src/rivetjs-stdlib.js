@@ -330,6 +330,7 @@
 	}
 
 	rivets.formatters.capitalize = function(target) {
+		target = rivets.formatters.toString(target)
 		return target.split(' ').map(function(seq) {
 			return seq.split('-').map(function(word) {
 				return word.charAt(0).toUpperCase() + word.slice(1)
