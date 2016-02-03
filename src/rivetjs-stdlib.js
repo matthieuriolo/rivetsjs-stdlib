@@ -3,10 +3,10 @@
 
     if (typeof exports === "object") {
         // CommonJS
-        factory(require("rivets"));
+        factory(require("rivets"), require("moment"));
     } else if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
-        define(["rivets"], factory);
+        define(["rivets", "moment"], factory);
     } else {
         // Browser globals
         factory(root.rivets);
@@ -30,6 +30,10 @@
      */
 
     /* general */
+    rivets.formatters.log = function(target) {
+        return console.log(target);
+    };
+
     rivets.formatters.default = function(target, val) {
         return !rivets.formatters.isEmpty(target) ? target : val;
     };
@@ -114,7 +118,7 @@
     };
 
     rivets.formatters.toInteger = function(target) {
-        var ret = parseInt(target*1, 10);
+        var ret = parseInt(target * 1, 10);
 
         return isNaN(ret) ? 0 : ret;
     };
@@ -297,6 +301,16 @@
         return moment(target);
     };
 
+    /**
+     * The date formatter returns a formatted date string according to the moment.js
+     * formatting syntax.
+     *
+     * ```html
+     * <span rv-value="model:date | date 'dddd, MMMM Do'"></span>
+     * ```
+     *
+     * @see {@link http://momentjs.com/docs/#/displaying} for format options.
+     */
     rivets.formatters.dateFormat = function(target, val) {
         return moment(target).format(val);
     };
@@ -351,6 +365,10 @@
     /* string&array functions */
     rivets.formatters.contains = function(target, val) {
         return target.indexOf(val) !== -1;
+    };
+
+    rivets.formatters.prettyPrint = function(target) {
+        return JSON.stringify(value, null, 2);
     };
 
     rivets.formatters.isEmpty = function(target) {
@@ -419,18 +437,33 @@
     };
 
     /* formatter shortcuts */
+    rivets.formatters.int = {
+        read: function(target) {
+            rivets.formatters.isInteger(target);
+        },
+        publish: function(target) {
+            rivets.formatters.isInteger(target);
+        }
+    };
+
     rivets.formatters.eq = rivets.formatters.isEqual;
     rivets.formatters.ne = function(target, val) {
         return rivets.formatters.negate(rivets.formatters.isEqual(target, val));
     };
+
     rivets.formatters.lt = rivets.formatters.isLower;
-    rivets.formatters.gt = rivets.formatters.isGreater;
     rivets.formatters.le = rivets.formatters.isLowerEqual;
+    rivets.formatters.lte = rivets.formatters.isLowerEqual;
+    rivets.formatters.gt = rivets.formatters.isGreater;
     rivets.formatters.ge = rivets.formatters.isGreaterEqual;
+    rivets.formatters.gte = rivets.formatters.isGreaterEqual;
+
     rivets.formatters.prv = rivets.formatters.preventDefault;
     rivets.formatters.inject = rivets.formatters.stringFormat;
     rivets.formatters.format = rivets.formatters.dateFormat;
     rivets.formatters.len = rivets.formatters.length;
     rivets.formatters.def = rivets.formatters.default;
     rivets.formatters.neg = rivets.formatters.negate;
-})(rivets);
+    rivets.formatters.date = rivets.formatters.dateFormat;
+
+})(rivets, moment);
