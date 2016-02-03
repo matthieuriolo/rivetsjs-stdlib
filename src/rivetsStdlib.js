@@ -439,10 +439,10 @@
     /* formatter shortcuts */
     rivets.formatters.int = {
         read: function(target) {
-            rivets.formatters.isInteger(target);
+            return rivets.formatters.toInteger(target);
         },
         publish: function(target) {
-            rivets.formatters.isInteger(target);
+            return rivets.formatters.toInteger(target);
         }
     };
 
