@@ -9,9 +9,9 @@
         define(["rivets", "moment"], factory);
     } else {
         // Browser globals
-        factory(root.rivets);
+        factory(root.rivets, root.moment);
     }
-})(this, function(rivets) {
+})(this, function(rivets, moment) {
     "use strict";
 
     rivets.stdlib = {
@@ -466,4 +466,4 @@
     rivets.formatters.neg = rivets.formatters.negate;
     rivets.formatters.date = rivets.formatters.dateFormat;
 
-})(rivets, moment);
+});
