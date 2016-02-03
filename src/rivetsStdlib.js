@@ -368,7 +368,7 @@
     };
 
     rivets.formatters.prettyPrint = function(target) {
-        return JSON.stringify(value, null, 2);
+        return JSON.stringify(target, null, 2);
     };
 
     rivets.formatters.isEmpty = function(target) {
