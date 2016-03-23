@@ -385,7 +385,7 @@
 	rivets.formatters.preventDefault = function(target) {
 		var self = this
 		return function(evt) {
-			e.preventDefault()
+			evt.preventDefault()
 			target.call(self, evt)
 			return false
 		};
