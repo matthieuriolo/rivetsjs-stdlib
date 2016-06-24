@@ -66,15 +66,34 @@ Shortcut | Description
 | lt | isLower |
 | gt | isGreater |
 | le | isLowerEqual |
+| lte | isLowerEqual |
 | ge | isGreaterEqual |
+| gte | isGreaterEqual |
 | neg | negate |
 | prv | preventDefault |
 | inject | stringFormat |
 | format | dateFormat |
 | len | length |
 | def | default |
+| stringify | prettyPrint |
+| int | integer |
+
+
 
 ### General formatters
+
+
+#### prettyPrint
+Returns target in a humanreadable string
+
+- target: any
+- return: string
+
+#### log
+Displays target in the browser console
+
+- target: any
+
 
 #### default
 This formatter returns a default value for `target` if it is empty (detected with the formatter isEmpty)
@@ -268,6 +287,14 @@ Returns the array representation of the given target. Objects will be flatten do
 #### toString
 Returns the string representation of the given target. This actually calls the JS method toString()
 
+- target: any
+- return: string
+
+
+#### integer
+Exactly the same as toInteger but implemented as two-way formatter
+
+- two-way
 - target: any
 - return: string
 
