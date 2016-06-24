@@ -1,13 +1,13 @@
 {
   "name": "rivetsjs-stdlib",
-  "version": "1.2.2",
+  "version": "1.3",
   "homepage": "https://github.com/matthieuriolo/rivetsjs-stdlib",
   "authors": [
     "Matthieu Riolo <advise@ocsource.ch>"
   ],
 
   "description": "A simple drop-in-place library for common problems while working with rivetsjs.",
-  "main": "src/rivetjs-stdlib.js",
+  "main": "src/rivetsstdlib.js",
   "moduleType": [
     "amd",
     "es6",
