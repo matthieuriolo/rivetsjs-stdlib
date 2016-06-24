@@ -556,6 +556,21 @@ Returns a string formatted with momentjs.format. The first parameter specifies t
 
 ### Object formatters
 
+#### pairs
+Returns an object holding the object, key and the corresponding value. The returned object has therefor
+always three properties: object, property and value
+
+- target: object
+- return: object
+
+Example:
+```html
+<div rv-each-item="myobject | pairs">
+	Found key { item.property | stringify } with value { item.value  | stringify } 
+</div>
+```
+
+
 #### keys
 Returns all keys of target
 

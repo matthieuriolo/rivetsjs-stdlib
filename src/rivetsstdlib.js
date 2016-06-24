@@ -11,8 +11,6 @@
 
 
 (function (root, factory) {
-    "use strict";
-
     if(typeof exports === "object") {
         // CommonJS
         module.exports = factory(require("rivets"), require("moment"));
@@ -329,6 +327,16 @@
     };
 
     /* object functions */
+
+    rivets.formatters.pairs = function(target) {
+        return Object.keys(target).map(function(key) {
+            return {
+                'object': target,
+                'property': key,
+                'value': target[key]
+            };
+        });
+    };
 
     rivets.formatters.keys = function(target) {
         return Object.keys(target);
