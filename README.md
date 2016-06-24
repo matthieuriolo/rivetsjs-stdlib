@@ -461,6 +461,10 @@ Returns true if the target contains the given substring or if target array holds
 - target: string|array
 - return: bool
 
+#### doesNotContain
+Shortcut for the function ['array'] | contains 'value' | negate 
+- target: string|array
+- return: bool
 
 #### length
 Returns the string length, the array length or the count of keys of an object
