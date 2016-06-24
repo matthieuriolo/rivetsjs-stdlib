@@ -342,6 +342,10 @@
 	rivets.formatters.contains = function(target, val) {
 		return target.indexOf(val) !== -1
 	}
+	
+	rivets.formatters.doesNotContain = function(target, val) {
+		return target.indexOf(val) === -1
+	}
 
 	rivets.formatters.isEmpty = function(target) {
 		if(!rivets.formatters.toBoolean(target))
