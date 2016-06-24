@@ -1,6 +1,11 @@
 rivetsjs-stdlib
 ===============
 
+# Special thanks to
+- [Jared Meyering](https://github.com/Jmeyering)
+- [Dan Saksa](https://github.com/danhere)
+- [Ben](https://github.com/benjaminmcdonald)
+
 A bunch of daily used formatters and bindings for [rivetsjs](http://rivetsjs.com).
 
 
