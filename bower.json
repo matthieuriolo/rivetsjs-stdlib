@@ -1,0 +1,29 @@
+{
+  "name": "rivetsjs-stdlib",
+  "version": "1.2.2",
+  "homepage": "https://github.com/matthieuriolo/rivetsjs-stdlib",
+  "authors": [
+    "Matthieu Riolo <advise@ocsource.ch>"
+  ],
+
+  "description": "A simple drop-in-place library for common problems while working with rivetsjs.",
+  "main": "src/rivetjs-stdlib.js",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals"
+  ],
+
+  "license": "GPL v2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  
+  "dependencies": {
+    "moment": ">=2.11.1"
+  }
+}
