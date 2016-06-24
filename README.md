@@ -1,11 +1,6 @@
 rivetsjs-stdlib
 ===============
 
-# Special thanks to
-- [Jared Meyering](https://github.com/Jmeyering)
-- [Dan Saksa](https://github.com/danhere)
-- [Ben](https://github.com/benjaminmcdonald)
-
 A bunch of daily used formatters and bindings for [rivetsjs](http://rivetsjs.com).
 
 
@@ -21,6 +16,12 @@ The library has been built for rivetjs 0.7.0. And optional for  jQuery 2.1.1 and
 jQuery is only needed for the template binder. Momentjs is only needed for the date formatters.
 
 The library has the same browser support as rivetjs
+
+## Special thanks to
+- [Jared Meyering](https://github.com/Jmeyering)
+- [Dan Saksa](https://github.com/danhere)
+- [Ben](https://github.com/benjaminmcdonald)
+
 
 # Overview
 - [Settings](#settings)
