@@ -23,7 +23,7 @@ The library has the same browser support as rivetjs
 - [Ben](https://github.com/benjaminmcdonald)
 
 ## License
-Rivetsjs is dual licensed with MIT and GPL
+Rivetsjs-stdlib is dual licensed with MIT and GPL
 
 
 # Overview
