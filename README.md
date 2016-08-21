@@ -72,10 +72,10 @@ Shortcut | Description
 --- | --- | ---
 | eq | isEqual |
 | ne | isEqual && negate |
-| lt | isLower |
+| lt | isLess |
 | gt | isGreater |
-| le | isLowerEqual |
-| lte | isLowerEqual |
+| le | isLessEqual |
+| lte | isLessEqual |
 | ge | isGreaterEqual |
 | gte | isGreaterEqual |
 | neg | negate |

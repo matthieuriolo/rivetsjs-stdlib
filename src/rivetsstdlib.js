@@ -523,6 +523,7 @@
     rivets.formatters.lt = rivets.formatters.isLess;
     rivets.formatters.gt = rivets.formatters.isGreater;
 
+
     rivets.formatters.le = rivets.formatters.isLessEqual;
     rivets.formatters.lte = rivets.formatters.isLessEqual;
     
@@ -540,4 +541,8 @@
 
     rivets.formatters.stringify = rivets.formatters.prettyPrint;
     rivets.formatters.int = rivets.formatters.integer;
+
+    // backwards compatibility
+    rivets.formatters.isLower = rivets.formatters.isLess;
+    rivets.formatters.isLowerEqual = rivets.formatters.isLessEqual;
 });
