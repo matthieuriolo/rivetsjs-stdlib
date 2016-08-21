@@ -520,11 +520,11 @@
         return rivets.formatters.negate(rivets.formatters.isEqual(target, val));
     };
 
-    rivets.formatters.lt = rivets.formatters.isLower;
+    rivets.formatters.lt = rivets.formatters.isLess;
     rivets.formatters.gt = rivets.formatters.isGreater;
 
-    rivets.formatters.le = rivets.formatters.isLowerEqual;
-    rivets.formatters.lte = rivets.formatters.isLowerEqual;
+    rivets.formatters.le = rivets.formatters.isLessEqual;
+    rivets.formatters.lte = rivets.formatters.isLessEqual;
     
     rivets.formatters.ge = rivets.formatters.isGreaterEqual;
     rivets.formatters.gte = rivets.formatters.isGreaterEqual;
