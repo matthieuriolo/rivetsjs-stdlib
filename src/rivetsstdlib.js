@@ -389,7 +389,7 @@
     };
     
     rivets.formatters.doesNotContain = function(target, val) {
-        return rivets.formatters.negater(rivets.formatters.contains(target, val)) === -1;
+        return rivets.formatters.negate(rivets.formatters.contains(target, val));
     };
 
     rivets.formatters.prettyPrint = function(target) {
