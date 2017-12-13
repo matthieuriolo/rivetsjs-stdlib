@@ -68,24 +68,24 @@ The value on which the formatter will be applied is always called `target`. In c
 
 ### Formatter shortcuts
 
-Shortcut | Description
---- | --- | ---
-| eq | isEqual |
-| ne | isEqual && negate |
-| lt | isLess |
-| gt | isGreater |
-| le | isLessEqual |
-| lte | isLessEqual |
-| ge | isGreaterEqual |
-| gte | isGreaterEqual |
-| neg | negate |
-| prv | preventDefault |
-| inject | stringFormat |
-| format | dateFormat |
-| len | length |
-| def | default |
-| stringify | prettyPrint |
-| int | integer |
+| Shortcut | Description
+| --- | --- | ---
+| eq | isEqual
+| ne | isEqual && negate
+| lt | isLess
+| gt | isGreater
+| le | isLessEqual
+| lte | isLessEqual
+| ge | isGreaterEqual
+| gte | isGreaterEqual
+| neg | negate
+| prv | preventDefault
+| inject | stringFormat
+| format | dateFormat
+| len | length
+| def | default
+| stringify | prettyPrint
+| int | integer
 
 
 
